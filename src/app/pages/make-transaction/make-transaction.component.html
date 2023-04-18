@@ -1,0 +1,32 @@
+<h1 class="text-center text-xl my-10">Make a transaction</h1>
+<form [formGroup]="transactionForm" (ngSubmit)="submit()"
+    class="flex justify-center flex-col lg:w-96 px-10 lg:px-0 mx-auto mt-10">
+
+    <div class="">Balance: {{balance}}</div>
+    <label for="amount">Amount: </label>
+    <input id="amount" type="text" formControlName="amount">
+
+    <label for="type">Type: </label>
+    <select id="type" formControlName="type">
+        <option *ngFor="let option of transactionTypes" [ngValue]="option">
+            {{option}}
+        </option>
+    </select>
+
+    <div *ngIf="transactionForm.value.type === 'TRANSFER'" class="flex justify-center flex-col">
+        <label for="destination">Destination: </label>
+        <select id="destination" formControlName="destination">
+            <option *ngFor="let account of accounts" [ngValue]="account.value">
+                {{account.value}}
+            </option>
+        </select>
+    </div>
+    
+    <div>Form Status:
+        <span class="{{transactionForm.status === 'VALID' ? 'text-green-500':'text-red-500'}}">
+            {{ transactionForm.status }}
+        </span>
+    </div>
+    <button class="p-2 rounded-md bg-black text-white my-5" type="submit"
+        [disabled]="!transactionForm.valid">Submit</button>
+</form>

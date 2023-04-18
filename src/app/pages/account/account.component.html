@@ -1,0 +1,31 @@
+<h1 class="text-center text-xl my-10">My account</h1>
+<form [formGroup]="updateForm" (ngSubmit)="update()"
+    class="flex justify-center flex-col lg:w-96 px-10 lg:px-0 mx-auto mt-10">
+
+    <div class="">Balance: {{balance}}</div>
+    <label for="firstName">First Name: </label>
+    <input id="firstName" type="text" formControlName="firstName">
+
+    <label for="lastName">Last Name: </label>
+    <input id="lastName" type="text" formControlName="lastName">
+
+    <label for="username">Username: </label>
+    <input id="username" type="text" formControlName="username">
+
+    <label for="password">Password: </label>
+    <input id="password" type="password" formControlName="password">
+
+    <label for="type">Account type: </label>
+    <select id="type" formControlName="accountType">
+        <option *ngFor="let option of accountTypes" [ngValue]="option">
+            {{option}}
+        </option>
+    </select>
+
+    <div>Form Status:
+        <span class="{{updateForm.status === 'VALID' ? 'text-green-500':'text-red-500'}}">
+            {{ updateForm.status }}
+        </span>
+    </div>
+    <button class="p-2 rounded-md bg-black text-white my-5" type="submit" [disabled]="!updateForm.valid">Update</button>
+</form>

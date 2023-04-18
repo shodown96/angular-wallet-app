@@ -1,0 +1,32 @@
+<div class="overflow-x-auto">
+  <table class="table-auto md:table-fixed text-center border border-gray-400 rounded-xl">
+    <thead>
+      <tr class="bg-gray-400">
+        <th>S/N</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="transactions.length > 0; else empty">
+      <tr *ngFor="let txn of transactions; let i = index" class="{{i%2 !== 0 ? 'bg-gray-400':''}}">
+        <td>{{i+1}}</td>
+        <td>{{txn.type}}</td>
+        <td>{{txn.amount}}</td>
+        <td>{{txn.source}}</td>
+        <td>{{txn.destination}}</td>
+        <td>{{txn.timestamp | date}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #empty>
+  <tbody>
+    <tr>
+      <td colspan="6" class="py-5">No transactions yet.</td>
+    </tr>
+  </tbody>
+</ng-template>

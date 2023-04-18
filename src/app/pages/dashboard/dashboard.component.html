@@ -1,0 +1,39 @@
+<div class="p-5">
+    <div class="text-xl mb-10">Customer: {{authUser.firstName}} {{authUser.lastName}} - {{authUser.accountNumber}}</div>
+    <div class="flex flex-col lg:flex-row lg:flex-wrap gap-10 lg:justify-between items-center mb-10">
+        <div class="p-5 bg-gray-400 rounded-md lg:w-auto w-full">
+            <div class="text-xl">Current balance</div>
+            <div class="font-semibold text-2xl">{{balance}}</div>
+        </div>
+
+        <div class="p-5 bg-gray-400 rounded-md lg:w-auto w-full">
+            <div class="text-xl">Total Amount Spent</div>
+            <div class="font-semibold text-2xl">{{totalOutboundTransactions}}</div>
+        </div>
+
+        <div class="p-5 bg-gray-400 rounded-md lg:w-auto w-full">
+            <div class="text-xl">Total Amount Received</div>
+            <div class="font-semibold text-2xl">{{totalInboundTransactions}}</div>
+        </div>
+        <div class="p-5 bg-gray-400 rounded-md lg:w-auto w-full">
+            <div class="text-xl">No. of users</div>
+            <div class="font-semibold text-2xl">{{usersCount}}</div>
+        </div>
+        <div class="p-5 bg-gray-400 rounded-md lg:w-auto w-full">
+            <div class="text-xl">Account Type</div>
+            <div class="font-semibold text-2xl">{{authUser.accountType}}</div>
+        </div>
+    </div>
+    <div>
+        <div
+            class="flex-col lg:flex-row justify-center items-center w-full mb-10 {{transactions && transactions.length > 0 ? 'flex': 'hidden'}}">
+            <div class="w-full mb-10">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="w-full lg:w-2/5 mb-10">
+                <canvas id="pieChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <app-transactions></app-transactions>
+</div>

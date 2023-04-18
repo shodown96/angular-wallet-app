@@ -1,0 +1,24 @@
+<div class="flex flex-col lg:flex-row items-center justify-between bg-black text-white p-3 text-xl">
+    <div>WalletApp
+        <span *ngIf="!menu" class="px-1 absolute top-2 cursor-pointer lg:hidden " (click)="toggleMenu()">
+            &#8964;
+        </span>
+        <span *ngIf="menu" class="px-1 absolute top-4 cursor-pointer lg:hidden " (click)="toggleMenu()">
+            &#94;
+        </span>
+    </div>
+    <div class="{{menu ? '' :'hidden lg:block'}}">
+        <div *ngIf="isLoggedIn(); else notLoggedIn"
+            class="flex flex-col lg:flex-row items-center lg:mt-auto mt-4 gap-2">
+            <span class="cursor-pointer p-2"><a href="{{Paths.Dashboard}}">Dashboard</a></span>
+            <span class="cursor-pointer p-2"><a href="{{Paths.Account}}">Account</a></span>
+            <span class="cursor-pointer p-2"><a href="{{Paths.MakeTransaction}}">MakeTransaction</a></span>
+            <span class="cursor-pointer p-2" (click)="logout()">Logout</span>
+        </div>
+    </div>
+    <ng-template #notLoggedIn>
+        <div class="flex flex-col lg:flex-row items-center lg:mt-auto mt-4 gap-2">
+            <span class="cursor-pointer p-2"><a href="{{Paths.Login}}">Login</a></span>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,8 @@
+<app-header></app-header>
+<div class="my-4 ml-5 font-semibold text-xl" *ngIf="isLoggedIn()">
+    Hi {{getAuthUser().firstName}}!
+</div>
+
+<div class="">
+    <router-outlet></router-outlet>
+</div>
